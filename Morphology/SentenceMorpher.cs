@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Morphology
 {
-    public class OneLetterDictionary
+    public class FirstCharDictionary
     {
         public List<string> KeyWords { get; set; } // нормализованное слово по которому будет осуществляться поиск
         //public Dictionary<HashSet<string>, string> AttributesDict { get; set; }
         public Dictionary<string, Dictionary<HashSet<string>, string>> WordVariations { get; set; }
-        public OneLetterDictionary()
+        public FirstCharDictionary()
         {
             KeyWords = new List<string>(); //?
             //AttributesDict = new Dictionary<HashSet<string>, string>();
@@ -35,13 +35,7 @@ namespace Morphology
 
     public class SentenceMorpher
     {
-        public static OneLetterDictionary[] FullDict = new OneLetterDictionary[33];
-
-        public static void InitFullDict()
-        {
-            for(int i =0; i<33; i++)
-                FullDict[i] = new OneLetterDictionary();
-        }
+        public static Dictionary<char, FirstCharDictionary> FullDict = new Dictionary<char, FirstCharDictionary>();
 
         private static bool IsStringValid(string s)
         {
@@ -62,23 +56,23 @@ namespace Morphology
             return (attributes, strArr[0]);
         }
 
-        public static int GetIndex(char c)
+        public static void AddKeyWord(HashSet<string> attr, string keyWord)
         {
-            return c == 'Ё' ? 32 : c - 'А';
+            var mainKey = keyWord[0];
+            FullDict[mainKey].KeyWords.Add(keyWord.ToUpper()); // toupper
+            if(!FullDict[mainKey].WordVariations.ContainsKey(keyWord))
+                FullDict[mainKey].WordVariations.Add(keyWord, new Dictionary<HashSet<string>, string>()); // empty dict
+            FullDict[mainKey].AddWordVariation(attr, keyWord); // ключевое слово тоже в списке
         }
 
-        public static void AddKeyWord(HashSet<string> attr, string keyWord, int ind)
+        public static void InitFirstCharDict(char c)
         {
-            FullDict[ind].KeyWords.Add(keyWord.ToUpper()); // toupper
-            if(!FullDict[ind].WordVariations.ContainsKey(keyWord))
-                FullDict[ind].WordVariations.Add(keyWord, new Dictionary<HashSet<string>, string>()); // empty dict
-            FullDict[ind].AddWordVariation(attr, keyWord); // ключевое слово тоже в списке
+            if (!FullDict.ContainsKey(c)) FullDict.Add(c, new FirstCharDictionary());
         }
 
         public static SentenceMorpher Create(IEnumerable<string> dictionaryLines)
         {
             bool lastLineWasNum = false;
-            InitFullDict();
             string keyWord = "";
             foreach (var line in dictionaryLines)
             {
@@ -86,22 +80,22 @@ namespace Morphology
                 if (!lineIsOk)
                 {
                     lastLineWasNum = true;
-                    continue;
                 }
                 else
                 {
                     var parseWord = ParseString(line);
+                    var currWord = parseWord.Item2;
+                    var neededAttr = parseWord.Item1;
+                    InitFirstCharDict(currWord[0]);
                     if (lastLineWasNum)
                     {
-                        var ind = GetIndex(parseWord.Item2.ToUpper()[0]);
-                        AddKeyWord(parseWord.Item1, parseWord.Item2, ind);
+                        keyWord = currWord;
+                        AddKeyWord(neededAttr, keyWord);
                         lastLineWasNum = false;
-                        keyWord = parseWord.Item2;
                     }
                     else
                     {
-                        var ind = GetIndex(keyWord[0]);
-                        FullDict[ind].AddWordVariation(parseWord.Item1, parseWord.Item2);
+                        FullDict[keyWord[0]].AddWordVariation(neededAttr, currWord);
                     }
                 }
             }
@@ -123,8 +117,7 @@ namespace Morphology
         public static string FindWord(string keyWord, HashSet<string> attr)
         {
             keyWord = keyWord.ToUpper();
-            var ind = GetIndex(keyWord[0]);
-            return FullDict[ind].GetWordVariation(keyWord, attr);
+            return FullDict[keyWord[0]].GetWordVariation(keyWord, attr);
         }
 
         public static bool NoAttributes(string s)
