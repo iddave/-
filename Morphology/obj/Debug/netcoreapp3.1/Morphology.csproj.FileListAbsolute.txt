@@ -1,0 +1,14 @@
+C:\Users\lalie\Downloads\Morphology\bin\Debug\netcoreapp3.1\Morphology.exe
+C:\Users\lalie\Downloads\Morphology\bin\Debug\netcoreapp3.1\Morphology.deps.json
+C:\Users\lalie\Downloads\Morphology\bin\Debug\netcoreapp3.1\Morphology.runtimeconfig.json
+C:\Users\lalie\Downloads\Morphology\bin\Debug\netcoreapp3.1\Morphology.runtimeconfig.dev.json
+C:\Users\lalie\Downloads\Morphology\bin\Debug\netcoreapp3.1\Morphology.dll
+C:\Users\lalie\Downloads\Morphology\bin\Debug\netcoreapp3.1\Morphology.pdb
+C:\Users\lalie\Downloads\Morphology\obj\Debug\netcoreapp3.1\Morphology.csproj.AssemblyReference.cache
+C:\Users\lalie\Downloads\Morphology\obj\Debug\netcoreapp3.1\Morphology.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lalie\Downloads\Morphology\obj\Debug\netcoreapp3.1\Morphology.AssemblyInfoInputs.cache
+C:\Users\lalie\Downloads\Morphology\obj\Debug\netcoreapp3.1\Morphology.AssemblyInfo.cs
+C:\Users\lalie\Downloads\Morphology\obj\Debug\netcoreapp3.1\Morphology.csproj.CoreCompileInputs.cache
+C:\Users\lalie\Downloads\Morphology\obj\Debug\netcoreapp3.1\Morphology.dll
+C:\Users\lalie\Downloads\Morphology\obj\Debug\netcoreapp3.1\Morphology.pdb
+C:\Users\lalie\Downloads\Morphology\obj\Debug\netcoreapp3.1\Morphology.genruntimeconfig.cache

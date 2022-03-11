@@ -1,0 +1,182 @@
+1
+ЁЖ	NOUN,anim,masc sing,nomn
+ЕЖА	NOUN,anim,masc sing,gent
+ЕЖУ	NOUN,anim,masc sing,datv
+ЕЖА	NOUN,anim,masc sing,accs
+ЕЖОМ	NOUN,anim,masc sing,ablt
+ЕЖЕ	NOUN,anim,masc sing,loct
+ЕЖИ	NOUN,anim,masc plur,nomn
+ЕЖЕЙ	NOUN,anim,masc plur,gent
+ЕЖАМ	NOUN,anim,masc plur,datv
+ЕЖЕЙ	NOUN,anim,masc plur,accs
+ЕЖАМИ	NOUN,anim,masc plur,ablt
+ЕЖАХ	NOUN,anim,masc plur,loct
+
+6918
+АКВАФОРТИСТ	NOUN,anim,masc sing,nomn
+АКВАФОРТИСТА	NOUN,anim,masc sing,gent
+АКВАФОРТИСТУ	NOUN,anim,masc sing,datv
+АКВАФОРТИСТА	NOUN,anim,masc sing,accs
+АКВАФОРТИСТОМ	NOUN,anim,masc sing,ablt
+АКВАФОРТИСТЕ	NOUN,anim,masc sing,loct
+АКВАФОРТИСТЫ	NOUN,anim,masc plur,nomn
+АКВАФОРТИСТОВ	NOUN,anim,masc plur,gent
+АКВАФОРТИСТАМ	NOUN,anim,masc plur,datv
+АКВАФОРТИСТОВ	NOUN,anim,masc plur,accs
+АКВАФОРТИСТАМИ	NOUN,anim,masc plur,ablt
+АКВАФОРТИСТАХ	NOUN,anim,masc plur,loct
+
+5590
+АЗАРТНЕЕ	COMP,Qual 
+АЗАРТНЕЙ	COMP,Qual V-ej
+ПОАЗАРТНЕЕ	COMP,Qual Cmp2
+ПОАЗАРТНЕЙ	COMP,Qual Cmp2,V-ej
+
+91105
+ДОТЯНУВ	GRND,perf,tran past
+ДОТЯНУВШИ	GRND,perf,tran past,V-sh
+
+91106
+ДОТЯНУЛСЯ	VERB,perf,intr masc,sing,past,indc
+ДОТЯНУЛАСЬ	VERB,perf,intr femn,sing,past,indc
+ДОТЯНУЛОСЬ	VERB,perf,intr neut,sing,past,indc
+ДОТЯНУЛИСЬ	VERB,perf,intr plur,past,indc
+ДОТЯНУСЬ	VERB,perf,intr sing,1per,futr,indc
+ДОТЯНЕМСЯ	VERB,perf,intr plur,1per,futr,indc
+ДОТЯНЕШЬСЯ	VERB,perf,intr sing,2per,futr,indc
+ДОТЯНЕТЕСЬ	VERB,perf,intr plur,2per,futr,indc
+ДОТЯНЕТСЯ	VERB,perf,intr sing,3per,futr,indc
+ДОТЯНУТСЯ	VERB,perf,intr plur,3per,futr,indc
+ДОТЯНЕМСЯ	VERB,perf,intr sing,impr,incl
+ДОТЯНЕМТЕСЬ	VERB,perf,intr plur,impr,incl
+ДОТЯНИСЬ	VERB,perf,intr sing,impr,excl
+ДОТЯНИТЕСЬ	VERB,perf,intr plur,impr,excl
+
+103416
+ЗАКЛИНАТЕЛЬНИЦА	NOUN,anim,femn sing,nomn
+ЗАКЛИНАТЕЛЬНИЦЫ	NOUN,anim,femn sing,gent
+ЗАКЛИНАТЕЛЬНИЦЕ	NOUN,anim,femn sing,datv
+ЗАКЛИНАТЕЛЬНИЦУ	NOUN,anim,femn sing,accs
+ЗАКЛИНАТЕЛЬНИЦЕЙ	NOUN,anim,femn sing,ablt
+ЗАКЛИНАТЕЛЬНИЦЕЮ	NOUN,anim,femn sing,ablt,V-ey
+ЗАКЛИНАТЕЛЬНИЦЕ	NOUN,anim,femn sing,loct
+ЗАКЛИНАТЕЛЬНИЦЫ	NOUN,anim,femn plur,nomn
+ЗАКЛИНАТЕЛЬНИЦ	NOUN,anim,femn plur,gent
+ЗАКЛИНАТЕЛЬНИЦАМ	NOUN,anim,femn plur,datv
+ЗАКЛИНАТЕЛЬНИЦ	NOUN,anim,femn plur,accs
+ЗАКЛИНАТЕЛЬНИЦАМИ	NOUN,anim,femn plur,ablt
+ЗАКЛИНАТЕЛЬНИЦАХ	NOUN,anim,femn plur,loct
+
+140648
+КОСНЕЯ	GRND,impf,intr pres
+КОСНЕВ	GRND,impf,intr past
+КОСНЕВШИ	GRND,impf,intr past,V-sh
+
+140649
+КОСНО	ADVB 
+
+177038
+НАТОРГОВЫВАЮ	VERB,impf,tran sing,1per,pres,indc
+НАТОРГОВЫВАЕМ	VERB,impf,tran plur,1per,pres,indc
+НАТОРГОВЫВАЕШЬ	VERB,impf,tran sing,2per,pres,indc
+НАТОРГОВЫВАЕТЕ	VERB,impf,tran plur,2per,pres,indc
+НАТОРГОВЫВАЕТ	VERB,impf,tran sing,3per,pres,indc
+НАТОРГОВЫВАЮТ	VERB,impf,tran plur,3per,pres,indc
+НАТОРГОВЫВАЛ	VERB,impf,tran masc,sing,past,indc
+НАТОРГОВЫВАЛА	VERB,impf,tran femn,sing,past,indc
+НАТОРГОВЫВАЛО	VERB,impf,tran neut,sing,past,indc
+НАТОРГОВЫВАЛИ	VERB,impf,tran plur,past,indc
+НАТОРГОВЫВАЙ	VERB,impf,tran sing,impr,excl
+НАТОРГОВЫВАЙТЕ	VERB,impf,tran plur,impr,excl
+
+177039
+НАТОРГОВЫВАТЬ	INFN,impf,tran 
+
+219306
+ОТТРЯХНУВ	GRND,perf,tran past
+ОТТРЯХНУВШИ	GRND,perf,tran past,V-sh
+
+219307
+ОТТУДА	ADVB,Dmns 
+
+357157
+УЛЬТРАФИОЛЕТОВЕЕ	COMP 
+УЛЬТРАФИОЛЕТОВЕЙ	COMP V-ej
+ПОУЛЬТРАФИОЛЕТОВЕЕ	COMP Cmp2
+ПОУЛЬТРАФИОЛЕТОВЕЙ	COMP Cmp2,V-ej
+
+381771
+ШУЛЕЙКИНА	NOUN,anim,femn,Sgtm,Surn sing,nomn
+ШУЛЕЙКИНОЙ	NOUN,anim,femn,Sgtm,Surn sing,gent
+ШУЛЕЙКИНОЙ	NOUN,anim,femn,Sgtm,Surn sing,datv
+ШУЛЕЙКИНУ	NOUN,anim,femn,Sgtm,Surn sing,accs
+ШУЛЕЙКИНОЙ	NOUN,anim,femn,Sgtm,Surn sing,ablt
+ШУЛЕЙКИНОЙ	NOUN,anim,femn,Sgtm,Surn sing,loct
+
+154482
+МАЛЯРНЕЕ	COMP,Qual 
+МАЛЯРНЕЙ	COMP,Qual V-ej
+ПОМАЛЯРНЕЕ	COMP,Qual Cmp2
+ПОМАЛЯРНЕЙ	COMP,Qual Cmp2,V-ej
+
+154483
+МАМА	NOUN,anim,femn sing,nomn
+МАМЫ	NOUN,anim,femn sing,gent
+МАМЕ	NOUN,anim,femn sing,datv
+МАМУ	NOUN,anim,femn sing,accs
+МАМОЙ	NOUN,anim,femn sing,ablt
+МАМОЮ	NOUN,anim,femn sing,ablt,V-oy
+МАМЕ	NOUN,anim,femn sing,loct
+МАМ	NOUN,anim,femn sing,voct
+МАМЫ	NOUN,anim,femn plur,nomn
+МАМ	NOUN,anim,femn plur,gent
+МАМАМ	NOUN,anim,femn plur,datv
+МАМ	NOUN,anim,femn plur,accs
+МАМАМИ	NOUN,anim,femn plur,ablt
+МАМАХ	NOUN,anim,femn plur,loct
+
+165925
+МОЮСЬ	VERB,impf,intr sing,1per,pres,indc
+МОЕМСЯ	VERB,impf,intr plur,1per,pres,indc
+МОЕШЬСЯ	VERB,impf,intr sing,2per,pres,indc
+МОЕТЕСЬ	VERB,impf,intr plur,2per,pres,indc
+МОЕТСЯ	VERB,impf,intr sing,3per,pres,indc
+МОЮТСЯ	VERB,impf,intr plur,3per,pres,indc
+МЫЛСЯ	VERB,impf,intr masc,sing,past,indc
+МЫЛАСЬ	VERB,impf,intr femn,sing,past,indc
+МЫЛОСЬ	VERB,impf,intr neut,sing,past,indc
+МЫЛИСЬ	VERB,impf,intr plur,past,indc
+МОЙСЯ	VERB,impf,intr sing,impr,excl
+МОЙТЕСЬ	VERB,impf,intr plur,impr,excl
+
+165926
+МЫТЬСЯ	INFN,impf,intr 
+
+297741
+РАМ	NOUN,inan,masc,Geox sing,nomn
+РАМА	NOUN,inan,masc,Geox sing,gent
+РАМУ	NOUN,inan,masc,Geox sing,datv
+РАМ	NOUN,inan,masc,Geox sing,accs
+РАМОМ	NOUN,inan,masc,Geox sing,ablt
+РАМЕ	NOUN,inan,masc,Geox sing,loct
+РАМЫ	NOUN,inan,masc,Geox plur,nomn
+РАМОВ	NOUN,inan,masc,Geox plur,gent
+РАМАМ	NOUN,inan,masc,Geox plur,datv
+РАМЫ	NOUN,inan,masc,Geox plur,accs
+РАМАМИ	NOUN,inan,masc,Geox plur,ablt
+РАМАХ	NOUN,inan,masc,Geox plur,loct
+
+297742
+РАМА	NOUN,inan,femn sing,nomn
+РАМЫ	NOUN,inan,femn sing,gent
+РАМЕ	NOUN,inan,femn sing,datv
+РАМУ	NOUN,inan,femn sing,accs
+РАМОЙ	NOUN,inan,femn sing,ablt
+РАМОЮ	NOUN,inan,femn sing,ablt,V-oy
+РАМЕ	NOUN,inan,femn sing,loct
+РАМЫ	NOUN,inan,femn plur,nomn
+РАМ	NOUN,inan,femn plur,gent
+РАМАМ	NOUN,inan,femn plur,datv
+РАМЫ	NOUN,inan,femn plur,accs
+РАМАМИ	NOUN,inan,femn plur,ablt
+РАМАХ	NOUN,inan,femn plur,loct
