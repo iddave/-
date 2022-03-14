@@ -8,12 +8,10 @@ namespace Morphology
     public class FirstCharDictionary
     {
         public List<string> KeyWords { get; set; } // нормализованное слово по которому будет осуществляться поиск
-        //public Dictionary<HashSet<string>, string> AttributesDict { get; set; }
         public Dictionary<string, Dictionary<HashSet<string>, string>> WordVariations { get; set; }
         public FirstCharDictionary()
         {
             KeyWords = new List<string>(); //?
-            //AttributesDict = new Dictionary<HashSet<string>, string>();
             WordVariations = new Dictionary<string, Dictionary<HashSet<string>, string>>();
         }
 
@@ -25,8 +23,6 @@ namespace Morphology
 
         public string GetWordVariation(string keyWord, HashSet<string> attributes) // тут проблема
         {
-            //var minAttrSize = 10e5;
-            //string ans = keyWord;
             foreach(var variant in WordVariations[keyWord])
             {
                 if (variant.Key.IsSupersetOf(attributes)) return variant.Value;
@@ -88,6 +84,8 @@ namespace Morphology
                     var parseWord = ParseString(line);
                     var currWord = parseWord.Item2;
                     var neededAttr = parseWord.Item1;
+                    
+                    //currAttr.Add(currWord.ToLower()); // добавление слова в атрибуты
                     InitFirstCharDict(currWord[0]);
                     if (lastLineWasNum)
                     {
