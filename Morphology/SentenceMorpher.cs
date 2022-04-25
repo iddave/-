@@ -1,55 +1,22 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+ 
 namespace Morphology
 {
-    public class OneLetterDictionary
-    {
-        public List<string> KeyWords { get; set; } // нормализованное слово по которому будет осуществляться поиск
-        //public Dictionary<HashSet<string>, string> AttributesDict { get; set; }
-        public Dictionary<string, Dictionary<HashSet<string>, string>> WordVariations { get; set; }
-        public OneLetterDictionary()
-        {
-            KeyWords = new List<string>(); //?
-            //AttributesDict = new Dictionary<HashSet<string>, string>();
-            WordVariations = new Dictionary<string, Dictionary<HashSet<string>, string>>();
-        }
-
-        public void AddWordVariation(HashSet<string> attributes, string variant)
-        {
-            var keyWord = KeyWords[KeyWords.Count - 1];
-            WordVariations[keyWord].Add(attributes, variant); // нужно ли создавать новый сет
-        }
-
-        public string GetWordVariation(string keyWord, HashSet<string> attributes)
-        {
-            foreach(var variant in WordVariations[keyWord])
-            {
-                if (variant.Key.IsSubsetOf(attributes)) return variant.Value;
-            }
-            return keyWord;
-        }
-    }
-
     public class SentenceMorpher
     {
-        public static OneLetterDictionary[] FullDict = new OneLetterDictionary[33];
-
-        public static void InitFullDict()
-        {
-            for(int i =0; i<33; i++)
-                FullDict[i] = new OneLetterDictionary();
-        }
-
+        // public static List<string> KeyWords = new List<string>(); // нормализованное слово по которому будет осуществляться поиск
+        public static Dictionary<string, List<(HashSet<string>, string)>> WordVariations = new Dictionary<string, List<(HashSet<string>, string)>>();
+ 
         private static bool IsStringValid(string s)
         {
-            if (!string.IsNullOrEmpty(s))
-                return char.IsLetter(s[0]);
-            return false;
+            int num;
+            return !string.IsNullOrEmpty(s) && !int.TryParse(s.Trim(), out num);
         }
-
+ 
         public static (HashSet<string>, string) ParseString(string line)
         {
             //в строках есть пробелы в конце
@@ -57,28 +24,28 @@ namespace Morphology
             var strArr = line.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
             var strArrLen = strArr.Length;
             var attributes = new HashSet<string>();
-            for(int i = 1; i<strArrLen; i++)
-                attributes.Add(strArr[i].ToLower());// tolower
-            return (attributes, strArr[0]);
+            for (int i = 1; i < strArrLen; i++)
+                attributes.Add(strArr[i].ToLower());
+            return (attributes, strArr[0].ToUpper());
         }
-
-        public static int GetIndex(char c)
+ 
+        public static void AddWordVariation(HashSet<string> attributes, string wordForm, string keyWord)
         {
-            return c == 'Ё' ? 32 : c - 'А';
+            var variant = (attributes, wordForm);
+            WordVariations[keyWord].Add(variant);
         }
-
-        public static void AddKeyWord(HashSet<string> attr, string keyWord, int ind)
+ 
+        public static void AddKeyWord(HashSet<string> attributes, string keyWord)
         {
-            FullDict[ind].KeyWords.Add(keyWord.ToUpper()); // toupper
-            if(!FullDict[ind].WordVariations.ContainsKey(keyWord))
-                FullDict[ind].WordVariations.Add(keyWord, new Dictionary<HashSet<string>, string>()); // empty dict
-            FullDict[ind].AddWordVariation(attr, keyWord); // ключевое слово тоже в списке
+ 
+            if (!WordVariations.ContainsKey(keyWord))
+                WordVariations.Add(keyWord, new List<(HashSet<string>, string)>()); // empty List
+            AddWordVariation(attributes, keyWord, keyWord); // ключевое слово тоже в списке
         }
-
+ 
         public static SentenceMorpher Create(IEnumerable<string> dictionaryLines)
         {
             bool lastLineWasNum = false;
-            InitFullDict();
             string keyWord = "";
             foreach (var line in dictionaryLines)
             {
@@ -86,52 +53,47 @@ namespace Morphology
                 if (!lineIsOk)
                 {
                     lastLineWasNum = true;
-                    continue;
                 }
                 else
                 {
                     var parseWord = ParseString(line);
+                    var currWord = parseWord.Item2;
+                    var currAttr = parseWord.Item1;
+ 
                     if (lastLineWasNum)
                     {
-                        var ind = GetIndex(parseWord.Item2.ToUpper()[0]);
-                        AddKeyWord(parseWord.Item1, parseWord.Item2, ind);
+                        keyWord = currWord;
+                        AddKeyWord(currAttr, keyWord);
                         lastLineWasNum = false;
-                        keyWord = parseWord.Item2;
                     }
                     else
                     {
-                        var ind = GetIndex(keyWord[0]);
-                        FullDict[ind].AddWordVariation(parseWord.Item1, parseWord.Item2);
+                        AddWordVariation(currAttr, currWord, keyWord);
                     }
                 }
             }
             return new SentenceMorpher();
         }
-
-        public static string[] ParseInputSentence(string sentence)
+ 
+        public static string FindWord(string keyWord, HashSet<string> attributes)
         {
-            return sentence.Split(' ', System.StringSplitOptions.RemoveEmptyEntries);
+            if (!WordVariations.ContainsKey(keyWord)) return keyWord;
+            foreach (var variant in WordVariations[keyWord])
+            {
+                if (variant.Item1.IsSupersetOf(attributes)) return variant.Item2;
+            }
+            return keyWord;
         }
-
-        public static (string, HashSet<string>) ParseInputWord(string str)
+ 
+        public static HashSet<string> ConvertToHashSet(string s)
         {
-            var splitStr = str.Split('{', System.StringSplitOptions.RemoveEmptyEntries);
-            var attributes = splitStr[1].TrimEnd('}').Split(new[] { ' ', ',' }, System.StringSplitOptions.RemoveEmptyEntries);
-            return (splitStr[0], new HashSet<string>(attributes));
+            s = s.TrimStart('{').TrimEnd('}');
+            var set = new HashSet<string>();
+            foreach (var gramem in s.Split(new[] { ',',' ' }, System.StringSplitOptions.RemoveEmptyEntries))
+                set.Add(gramem.ToLower());
+            return set;
         }
-
-        public static string FindWord(string keyWord, HashSet<string> attr)
-        {
-            keyWord = keyWord.ToUpper();
-            var ind = GetIndex(keyWord[0]);
-            return FullDict[ind].GetWordVariation(keyWord, attr);
-        }
-
-        public static bool NoAttributes(string s)
-        {
-            return !s.Contains('{');
-        }
-
+ 
         /// <summary>
         ///     Выполняет склонение предложения согласно указанному формату
         /// </summary>
@@ -146,16 +108,23 @@ namespace Morphology
         public virtual string Morph(string sentence)
         {
             var newSentence = new List<string>();
-            foreach(var w in ParseInputSentence(sentence))
+ 
+            sentence = sentence.TrimEnd() + " "; //если вдруг на конце уже были пробелы
+            var pattern = @"(.+?)(\{.*?\})?\s";
+            foreach (Match match in Regex.Matches(sentence, pattern))
             {
-                if (NoAttributes(w)) newSentence.Add(w.ToUpper());
+                var keyWord = match.Groups[1].Value.ToUpper(); // тут должно быть слово
+                var attributesStr = match.Groups[2].Value; // тут атрибуты
+                if (string.IsNullOrWhiteSpace(attributesStr) || attributesStr == "{}") 
+                    newSentence.Add(keyWord);
                 else
                 {
-                    var word = ParseInputWord(w);
-                    newSentence.Add(FindWord(word.Item1.ToUpper(), word.Item2));
+                    var attributes = ConvertToHashSet(attributesStr);
+                    newSentence.Add(FindWord(keyWord, attributes));
                 }
             }
-            return string.Join(' ',newSentence);
+            return string.Join(' ', newSentence);
         }
     }
 }
+ 
